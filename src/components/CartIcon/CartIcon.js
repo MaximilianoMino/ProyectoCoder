@@ -4,7 +4,7 @@ import { faShoppingCart } from '@fortawesome/free-solid-svg-icons';
 
 
 const styles = {
-  color: '#00CED1'
+  color: 'black'
 }
 
 const CartIcon = () => {

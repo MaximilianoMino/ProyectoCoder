@@ -7,16 +7,13 @@ import Button from 'react-bootstrap/Button';
 import 'bootstrap/dist/css/bootstrap.min.css';
 import CartIcon from '../CartIcon/CartIcon';
 
-
-const styles = {
-  color: '#00CED1'
-}
-
+const bgNavBar = {
+ backgroundImage: "linear-gradient(120deg, #fdfbfb 0%, #ebedee 100%)"}
 
 const NavBar = () => {
 
 return <>
-  <Navbar bg="dark" variant="dark" collapseOnSelect expand="lg" className="container-fluid">
+  <Navbar style={bgNavBar} variant="light" collapseOnSelect expand="lg" className="container-fluid sticky-top">
    <CartIcon/> <Navbar.Brand className="mr-auto">TIEND-APP</Navbar.Brand>
     <Navbar.Toggle aria-controls="responsive-navbar-nav"/>
   <Navbar.Collapse id="responsive-navbar-nav">
@@ -29,7 +26,7 @@ return <>
      </Nav>
     <Form inline>
       <FormControl type="text" placeholder="Busca tu producto.." className="mr-sm-2"/>
-      <Button style={styles} variant="outline-info" className="mt-2 mt-sm-0">Buscar</Button>
+      <Button variant="dark" className="mt-2 mt-sm-0">Buscar</Button>
     </Form>
    </Navbar.Collapse>
   </Navbar>

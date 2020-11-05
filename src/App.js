@@ -5,8 +5,9 @@ import Home from './pages/Home';
 
 const App = () => {
     return ( <>
-        <NavBar/>
-        <Home/>
+        <NavBar />
+        <Home greetings="Bienvenidos a TIEND-APP"/>
+        
         </>
     );
 }
