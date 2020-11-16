@@ -4,7 +4,7 @@ import Form from 'react-bootstrap/Form';
 import FormControl from 'react-bootstrap/FormControl';
 
 
-const ItemCount = ({initial, min, max}) => {
+const ItemCount = ({initial, min, max, onAdd}) => {
 
 
 
@@ -18,12 +18,15 @@ const increment = () => {
  if (count < max)  
  {
    setCount(count+1) 
+   onAdd(count+1);
+
 }
 }
 const decrement = () => {
   
  if (count > min){
    setCount(count - 1)
+   onAdd(count - 1);
  }
 
 }
