@@ -3,22 +3,20 @@ import Button from 'react-bootstrap/Button';
 import Card from 'react-bootstrap/Card';
 
 
-const Item = ({product}) => {
+const Item = ({thumbnail, price, id, title}) => {
  return (
-    <div className="d-flex flex-wrap justify-content-center"> 
+    <div className="d-inline-flex flex-wrap justify-content-center"> 
  
-      {product.map(item => (
-    <Card style={{ width: '18rem' }} key={item.id} className="m-4">
-  <Card.Img variant="top" src={item.thumbnail} className="img-fluid" />
+    <Card style={{ width: '18rem' }} key={id} className="m-4">
+  <Card.Img variant="top" src={thumbnail} className="img-fluid" />
   <Card.Body>
-      <Card.Title>{item.title}</Card.Title>
+      <Card.Title>{title}</Card.Title>
     <Card.Text>
-     {`$ ${item.price}`}
+     {`$ ${price}`}
     </Card.Text>
     <Button variant="primary" className="btn-block">Agregar al carrito</Button>
   </Card.Body>
-</Card>)
-)}
+</Card>
     </div>
   );
 }

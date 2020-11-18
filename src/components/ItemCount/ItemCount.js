@@ -1,8 +1,6 @@
 import React, {useState} from 'react'
-import Button from 'react-bootstrap/Button';
 import Form from 'react-bootstrap/Form';
 import FormControl from 'react-bootstrap/FormControl';
-
 
 const ItemCount = ({initial, min, max, onAdd}) => {
 
@@ -31,28 +29,28 @@ const decrement = () => {
 
 }
 
-const reset = () => {
-  setCount(initial)
-}
 
 
 
 
-let sinProd = `Aqui puedes comprar`;
-let conProd = `Estas comprando ${count} prendas`;
+
+let sinProd = `Indica la cantidad`;
+let conProd = `Estas comprando ${count} unidades`;
 
 
    return (<>
-     <div className="d-flex align-content-center justify-content-center form-group container">
+    <h3 className="my-2 text-center">{count===0 ? sinProd : conProd}</h3>  
+    <div className="d-flex align-content-center justify-content-center form-group container">
     <Form>
 
-     <h3 className="my-2 text-center">{count===0 ? sinProd : conProd}</h3>
-  
-    <FormControl type="text" value={count}  /> 
     
-    <Button onClick={increment} variant="dark m-2">Incremento</Button>
-    <Button onClick={decrement} variant="dark m-2">Decremento</Button>
-    <Button onClick={reset} variant="dark m-2">Reiniciar</Button>
+  <div className="d-inline-flex">
+    <h1 onClick={increment} variant="dark m-2" >+</h1>
+    <FormControl value={count} className="mt-2 mx-2 text-center" />
+  
+  <h1 onClick={decrement} variant="dark m-2">-</h1>
+   
+    </div>
     </Form>
     </div>
     </>
