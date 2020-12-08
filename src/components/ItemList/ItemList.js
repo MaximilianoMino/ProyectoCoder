@@ -1,6 +1,7 @@
 import React, {useState,useEffect} from 'react';
 import Item from '../Item/Item'
-import {getProducts} from '../Api/dataBase';
+import {getProducts} from '../../Api/dataBase';
+
 
  const ItemList = () => {
 
@@ -20,16 +21,18 @@ getProducts()
 setProduct(response.results)
 setLoading(false);
 });
-}, 3000)
+}, 2000)
 },[])
 
  
 
     return (
       <>
-      <div> 
-        {loading ? <h1 className="text-center">Loading...</h1>:
-  (product.map(e =>  <Item title={e.title} price={e.price} id={e.id} thumbnail={e.thumbnail}  />))
+      <div className="d-flex justify-content-center flex-wrap"> 
+        {loading ? <i className="spinner-border"></i>:
+        (product.map(e => 
+   <Item title={e.title} price={e.price} id={e.id} thumbnail={e.thumbnail} key={e.id}
+    />))
 }
         </div>
       </>

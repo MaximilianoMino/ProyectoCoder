@@ -6,6 +6,7 @@ import FormControl from 'react-bootstrap/FormControl';
 import Button from 'react-bootstrap/Button';
 import 'bootstrap/dist/css/bootstrap.min.css';
 import CartIcon from '../CartIcon/CartIcon';
+import { NavLink } from 'react-router-dom';
 
 const bgNavBar = {
  backgroundImage: "linear-gradient(120deg, #fdfbfb 0%, #ebedee 100%)"}
@@ -14,11 +15,11 @@ const NavBar = () => {
 
 return <>
   <Navbar style={bgNavBar} variant="light" collapseOnSelect expand="lg" className="container-fluid sticky-top">
-   <CartIcon/> <Navbar.Brand className="mr-auto">TIEND-APP</Navbar.Brand>
+  <NavLink to="/cart">  <CartIcon/> </NavLink> <Navbar.Brand className="mr-auto">TIEND-APP</Navbar.Brand>
     <Navbar.Toggle aria-controls="responsive-navbar-nav"/>
   <Navbar.Collapse id="responsive-navbar-nav">
     <Nav className="m-auto">
-      <Nav.Link href="#home">Home</Nav.Link>
+      <NavLink to="/" activeClassName="selected" className="navbar-text">Home</NavLink>
       <Nav.Link href="#productos">Productos</Nav.Link>
       <Nav.Link href="#miCarrito">Mi Carrito</Nav.Link>
     

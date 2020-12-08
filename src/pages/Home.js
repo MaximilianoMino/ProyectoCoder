@@ -20,7 +20,7 @@ const Home = ({greetings}) => {
        
         <div style={styles}>
         
-        <h1 className="text-center py-5" >{greetings}</h1>
+        <h1 className="text-center py-5">{greetings}</h1>
        <hr></hr>
         
      
