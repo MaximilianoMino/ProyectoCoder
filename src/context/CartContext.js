@@ -1,78 +1,74 @@
-import React,{ createContext, useContext, useState } from "react";
+import React, { createContext, useContext, useState } from "react";
 
 const CartContext = createContext();
 
 const useCartContext = () => useContext(CartContext);
 
+export const CartProvider = ({ children }) => {
+  const [productArray, setProductArray] = useState([]);
 
-export const CartProvider = ({children}) => {
+  //Agregar producto al carrito
 
-const [productArray, setProductArray] = useState([]);
+  const addProductToCart = (newValue, quantity) => {
+    //Buscar en el array si existe el producto
+    const productExist = productArray.find((element) => {
+      return element.id === newValue.id;
+    });
 
+    //Si existe sumar cantidad
 
-//Agregar producto al carrito 
+    if (productExist) {
+      productExist.quantity += quantity;
+      setProductArray([...productArray]);
+    } else {
+      //Si no existe, agregamos el prod
 
-const addProductToCart = (newValue, quantity) => {
+      setProductArray([...productArray, { ...newValue, quantity }]);
+    }
+  };
 
-//Buscar en el array si existe el producto
-const productExist = productArray.find((element) => {return element.id === newValue.id})
+  //Sumar valor de todos los productos
 
-//Si existe sumar cantidad
+  const getGrandTotal = () => {
+    return productArray.reduce((acc, p) => (acc += p.price * p.quantity), 0);
+  };
 
-if (productExist){
+  //Eliminar producto del carrito
 
-  productExist.quantity += quantity;
-  setProductArray([...productArray])
+  const deleteProduct = (id) => {
+    productArray.splice(
+      productArray.findIndex((p) => p.id === id),
+      1
+    );
 
-} else{
+    setProductArray([...productArray]);
+  };
 
-//Si no existe, agregamos el prod
+  //Vaciar carrito
 
-  setProductArray([...productArray, {...newValue, quantity}]);
+  const clearCart = () => {
+    setProductArray([]);
+  };
 
-}
-}
-
-//Sumar valor de todos los productos
-
-const getGrandTotal = () => {
-    return productArray.reduce((acc, p) => (acc += p.price * p.quantity), 0)
-  }
-
-
-//Eliminar producto del carrito 
-
-const deleteProduct = (id) => { 
-  productArray.splice(
-    productArray.findIndex((p) => p.id === id),1
-  )
-
-  setProductArray([...productArray])
- }
-
-
-
-//Vaciar carrito
-
-const clearCart = () => {
-  setProductArray([]);
-}
-
-//Cantidad de productos en el carrito
-const getCartIconQuantity = () => {
-
-    return productArray.reduce((acc, p) => 
-   ( acc += p.quantity ),0)
-  
-  }
-
+  //Cantidad de productos en el carrito
+  const getCartIconQuantity = () => {
+    return productArray.reduce((acc, p) => (acc += p.quantity), 0);
+  };
 
   return (
-    
-<CartContext.Provider value={ { productArray, addProductToCart, clearCart, getCartIconQuantity, deleteProduct, getGrandTotal } }>
-  {children}
-</CartContext.Provider>
-  )
-}
+    <CartContext.Provider
+      value={{
+        productArray,
+        addProductToCart,
+        clearCart,
+        getCartIconQuantity,
+        deleteProduct,
+        getGrandTotal,
+      }}
+    >
+      {children}
+    </CartContext.Provider>
+  );
+};
 
-export default useCartContext
+export default useCartContext;
