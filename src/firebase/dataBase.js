@@ -6,7 +6,7 @@ export const getProducts = () => {
 
     return new Promise((resolve, reject) => {
 
-       const products = getFirestore().collection("products");
+       const products = getFirestore().collection("products").where('price', '>', 500);
        products.get().then((response) =>{
 
         console.log(response)
