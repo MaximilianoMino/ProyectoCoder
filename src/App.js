@@ -6,22 +6,26 @@ import { BrowserRouter, Switch, Route } from "react-router-dom";
 import Cart from "./components/CartIcon/Cart";
 import { CartProvider } from "./context/CartContext";
 
+
+
+
 const App = () => {
   return (
     <CartProvider>
-      <BrowserRouter>
+      <BrowserRouter> 
+   
         <NavBar />
-        <Switch>
-          <Route exact path="/">
-            <Home greetings="Bienvenidos a TIEND-APP" />
-          </Route>
-
-          <Route exact path="/detalle/:id">
-            <ItemDetailContainer />
-          </Route>
+        <Switch>    
           <Route exact path="/cart">
             <Cart />
           </Route>
+          <Route exact path="/:cat?">
+            <Home greetings="Bienvenidos a TIEND-APP" />
+          </Route>
+          <Route exact path="/detalle/:id">
+            <ItemDetailContainer />
+          </Route>
+        
         </Switch>
       </BrowserRouter>
     </CartProvider>

@@ -2,18 +2,20 @@ import React, { useState, useEffect } from "react";
 import Item from "../Item/Item";
 import { getProducts } from "../../firebase/dataBase";
 
+
 const ItemList = () => {
+
   const [product, setProduct] = useState([]);
   const [loading, setLoading] = useState(true);
 
   useEffect(() => {
     setTimeout(() => {
       getProducts()
-       
         .then((response) => {
           setProduct(response);
           setLoading(false);
         });
+    
     }, 2000);
   }, []);
 

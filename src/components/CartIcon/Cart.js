@@ -5,7 +5,6 @@ import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faTimesCircle } from "@fortawesome/free-solid-svg-icons";
 import Button from "react-bootstrap/Button";
 import { Link } from "react-router-dom";
-
 const Cart = () => {
   const {
     productArray,
@@ -73,7 +72,6 @@ const Cart = () => {
 
             {/* Seccion total */}
             <div className="d-flex col-12 justify-content-between fixed-bottom">
-
               {/* Todavia no funciona  */}
               <Button className="btn-dark">Volver</Button>
 

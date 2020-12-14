@@ -57,13 +57,14 @@ const ItemDetail = ({ product }) => {
                 </tr>
               </thead>
               <tbody>
-                <tr>
-                  <th>$ {product.price}</th>
+                <tr className=" font-weight-bold">
+                 $ {product.price}
                 </tr>
-                <th>Reputacion del vendedor</th>
-                <tr className="my-1">
-                  Transacciones: {product.seller_transactions_total}
+                <tr className="font-weight-bold">Reputacion del vendedor</tr>
+                
+                  </tbody>
                   <ul className="list-group my-1">
+                    <li className="mt-1">Transacciones: {product.seller_transactions}</li>
                     <li className="my-1">
                       Ventas completadas:{" "}
                       {product.seller_transactions_completed}
@@ -80,14 +81,11 @@ const ItemDetail = ({ product }) => {
                         Perfil del vendedor
                       </a>
                     </li>
+                    <li className="my-1"> Paga en hasta {product.installments_quantity} cuotas de ${" "}
+                  {product.installments_amount}</li>
                   </ul>
-                </tr>
-                <tr className="my-1">
-                  <i class="far fa-credit-card"></i>
-                  Paga en hasta {product.installments_quantity} cuotas de ${" "}
-                  {product.installments_amount}
-                </tr>
-              </tbody>
+                
+       
               
             </Table>
           </div>

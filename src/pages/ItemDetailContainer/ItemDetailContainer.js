@@ -1,24 +1,24 @@
 import React, { useState, useEffect } from "react";
 import ItemDetail from "../../components/ItemDetail/ItemDetail";
-import { getProducts } from "../../firebase/dataBase";
+import { getProductsById } from "../../firebase/dataBase";
 import { useParams } from "react-router-dom";
 
 const ItemDetailContainer = () => {
   const { id } = useParams();
-  console.log(id);
 
   const [product, setProduct] = useState({});
   const [loading, setLoading] = useState(true);
 
   useEffect(() => {
     setTimeout(() => {
-      getProducts(id)
+      getProductsById(id)
        
         .then((response) => {
-          let product = response.filter((prod) => {
+       /*    let product = response.filter((prod) => {
             return prod.id === id;
-          })[0];
-          setProduct(product);
+          })[0]; */
+          console.log(response)
+          setProduct(response);
           setLoading(false);
         });
     }, 2000);
