@@ -1,11 +1,11 @@
 import React from "react";
 import NavBar from "./components/NavBar/NavBar";
-import Home from "./pages/Home";
+import Home from "./pages/Home/Home";
 import ItemDetailContainer from "./pages/ItemDetailContainer/ItemDetailContainer";
 import { BrowserRouter, Switch, Route } from "react-router-dom";
 import Cart from "./components/CartIcon/Cart";
 import { CartProvider } from "./context/CartContext";
-
+import UserForm from '../src/components/Form/UserForm';
 
 
 
@@ -18,6 +18,9 @@ const App = () => {
         <Switch>    
           <Route exact path="/cart">
             <Cart />
+          </Route>
+          <Route exact path ="/order">
+            <UserForm />
           </Route>
           <Route exact path="/:cat?">
             <Home greetings="Bienvenidos a TIEND-APP" />

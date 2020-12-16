@@ -1,11 +1,30 @@
-import React, { createContext, useContext, useState } from "react";
+import React, { createContext, useContext, useState, useEffect } from "react";
 
 const CartContext = createContext();
 
 const useCartContext = () => useContext(CartContext);
 
 export const CartProvider = ({ children }) => {
-  const [productArray, setProductArray] = useState([]);
+
+  let productsInStorage = JSON.parse(localStorage.getItem("Products"));
+  if (!productsInStorage) {
+    productsInStorage = [];
+  }
+
+
+  const [productArray, setProductArray] = useState(productsInStorage);
+
+//Agregar y traer productos del storage 
+
+  useEffect(() => {
+    if (productsInStorage) {
+      localStorage.setItem("Products", JSON.stringify(productArray));
+    } else {
+      localStorage.setItem("Products", JSON.stringify([]));
+    }
+
+    if(!productArray){}
+  }, [productArray, productsInStorage]);
 
   //Agregar producto al carrito
 
@@ -38,11 +57,19 @@ export const CartProvider = ({ children }) => {
   const deleteProduct = (id) => {
     productArray.splice(
       productArray.findIndex((p) => p.id === id),
-      1
-    );
+      1  
+    ); 
 
     setProductArray([...productArray]);
+
   };
+
+
+//Boton de volver atras
+const historyBack = () =>{
+window.history.back();
+}
+
 
   //Vaciar carrito
 
@@ -52,7 +79,7 @@ export const CartProvider = ({ children }) => {
 
   //Cantidad de productos en el carrito
   const getCartIconQuantity = () => {
-    return productArray.reduce((acc, p) => (acc += p.quantity), 0);
+    return productArray.reduce((acc, p) => (acc += p.quantity), null);
   };
 
   return (
@@ -64,6 +91,7 @@ export const CartProvider = ({ children }) => {
         getCartIconQuantity,
         deleteProduct,
         getGrandTotal,
+        historyBack
       }}
     >
       {children}

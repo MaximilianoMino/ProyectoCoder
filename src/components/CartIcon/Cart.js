@@ -5,23 +5,25 @@ import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faTimesCircle } from "@fortawesome/free-solid-svg-icons";
 import Button from "react-bootstrap/Button";
 import { Link } from "react-router-dom";
+// import UserForm from "../Form/UserForm";
 const Cart = () => {
   const {
     productArray,
     clearCart,
     deleteProduct,
     getGrandTotal,
+    historyBack,
   } = useCartContext();
 
-  const handleDel = () => {
-    deleteProduct(productArray);
+  const handleDel = (p) => {
+    deleteProduct(p.id);
   };
 
   return (
     <>
       <div>
         <h1 className="text-center">Carrito de compras</h1>
-
+        {/* <UserForm /> */}
         {productArray.length === 0 ? (
           <div>
             <p className="ml-4 mt-3">
@@ -73,7 +75,9 @@ const Cart = () => {
             {/* Seccion total */}
             <div className="d-flex col-12 justify-content-between fixed-bottom">
               {/* Todavia no funciona  */}
-              <Button className="btn-dark">Volver</Button>
+              <Button className="btn-dark" onClick={historyBack}>
+                Volver
+              </Button>
 
               <h3>Total ${getGrandTotal()} ARS</h3>
 
@@ -84,12 +88,17 @@ const Cart = () => {
               </Link>
             </div>
 
+            <div className="d-flex justify-content-between">
             <button
-              className="ml-3 btn btn-dark d-flex justify-content-center"
+              className="ml-3 btn btn-dark"
               onClick={clearCart}
             >
               Borrar todos los productos
             </button>
+              <Link to="/order">
+                <button className="ml-3 btn btn-dark">Comprar</button>
+              </Link>
+            </div>
           </Table>
         )}
       </div>

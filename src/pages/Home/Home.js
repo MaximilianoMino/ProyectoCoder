@@ -1,9 +1,9 @@
 import React from "react";
 import { useEffect, useState } from "react";
 import { useParams } from "react-router-dom";
-import ItemList from "../components/ItemList/ItemList";
-import Item from "../components/Item/Item";
-import { getProducts} from '../firebase/dataBase'
+import ItemList from "../../components/ItemList/ItemList";
+import Item from "../../components/Item/Item";
+import { getProducts} from '../../firebase/dataBase'
 
 
 
