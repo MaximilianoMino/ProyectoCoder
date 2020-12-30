@@ -23,7 +23,7 @@ export const CartProvider = ({ children }) => {
       localStorage.setItem("Products", JSON.stringify([]));
     }
 
-    if(!productArray){}
+    
   }, [productArray, productsInStorage]);
 
   //Agregar producto al carrito

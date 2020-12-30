@@ -11,10 +11,6 @@ import { getCategories } from "../../firebase/dataBase";
 
 
 
-const bgNavBar = {
-  backgroundImage: "linear-gradient(120deg, #fdfbfb 0%, #ebedee 100%)",
-};
-
 const NavBar = () => {
   
   const [categories, setCategories] = useState();
@@ -28,20 +24,27 @@ const NavBar = () => {
       setCategories(response);
     });
   }, []);
+  
+  console.log(categories)
   return (
     <>
+      {" "}
       <Navbar
-        style={bgNavBar}
         variant="light"
         collapseOnSelect
         expand="lg"
-        className="container-fluid sticky-top"
-      >
+        className="container-fluid sticky-top bg-light"
+      >    <img
+            src="../../assets/images/logo.png"
+            width="10px"
+            height="10px"
+            alt="sdfsdf"
+          />
         <Link to="/cart">
           <CartIcon />
         </Link>
         <Link to="/">
-          <Navbar.Brand className="ml-3 mt-1">TIEND-APP</Navbar.Brand>
+      
         </Link>
         <Navbar.Toggle aria-controls="responsive-navbar-nav" />
         <Navbar.Collapse id="responsive-navbar-nav">
@@ -53,27 +56,20 @@ const NavBar = () => {
             >
               Home
             </NavLink>
-            {categories ? categories.map((e) =>{
-            return (
-              <NavLink key={e.id} className="navbar-text mx-2" to={`/${e.id}`}>
-                {e.name}
-              </NavLink>
-            );
-              
-            }):""}
-
-           
+            {categories
+              ? categories.map((e) => {
+                  return (
+                    <NavLink
+                      key={e.id}
+                      className="navbar-text mx-2"
+                      to={`/categories/${e.id}`}
+                    >
+                      {e.name}
+                    </NavLink>
+                  );
+                })
+              : ""}
           </Nav>
-          <Form inline>
-            <FormControl
-              type="text"
-              placeholder="Busca tu producto.."
-              className="mr-sm-2"
-            />
-            <Button variant="dark" className="mt-2 mt-sm-0">
-              Buscar
-            </Button>
-          </Form>
         </Navbar.Collapse>
       </Navbar>
     </>

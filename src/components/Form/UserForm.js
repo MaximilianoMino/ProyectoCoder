@@ -82,20 +82,9 @@ const UserForm = () => {
 
 const db = getFirestore();
 db.collection("Orders").add(order);
-    /*    if (name.trim() === "" || email.trim() === "") {
-      setError(true);
-  
-    } 
 
-      console.log('name: ' + name)
-      console.log("email: " + email);
-    setError(false);
- */
   };
 
-  /*       console.log(total);
-      console.log(items)
- */
 
   return (
     <>

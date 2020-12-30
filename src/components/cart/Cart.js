@@ -15,9 +15,16 @@ const Cart = () => {
     historyBack,
   } = useCartContext();
 
+ 
   const handleDel = (p) => {
     deleteProduct(p.id);
   };
+
+
+  const style ={ 
+    maxHeight: "200px",
+    maxWidth: "200px"
+  }
 
   return (
     <>
@@ -31,9 +38,9 @@ const Cart = () => {
             </p>
             <p className="ml-4">
               Haga clic{" "}
-              <a href="/" className="font-weight-bold">
+              <Link to="/"  className="font-weight-bold">
                 aqui
-              </a>{" "}
+              </Link>{" "}
               para continuar haciendo compras
             </p>
           </div>
@@ -55,7 +62,8 @@ const Cart = () => {
                       alt=""
                       title={e.title}
                       src={e.thumbnail}
-                      className="img-fluid"
+                      style={style}
+                      className="img-fluid card-img mw-50"
                     />
                   </td>
                   <td>{e.title}</td>

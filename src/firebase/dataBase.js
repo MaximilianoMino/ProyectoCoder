@@ -9,11 +9,6 @@ export const getProducts = (cat) => {
 
         if (cat) products = products.where("category_id", "==", `${cat}`);
 
-        console.log("cat: " + cat);
-
-        console.log("products: " + products)
-
-
         products.get().then((response) => {
 
             if (response.size === 0) {
@@ -22,7 +17,6 @@ export const getProducts = (cat) => {
 
             const data = response.docs.map((doc) => ({...doc.data(), idFirebase: doc.id }));
 
-            console.log(data)
             resolve(data);
         })
     })
@@ -39,8 +33,7 @@ export const getProductsById = (id) => {
             if (response.size === 0) reject(`<h1>empty</h1>`);
 
             // const data = {...response.data(), id: response.id }
-console.log('response.data: ' +response.data())
-            //  console.log('data: ' + data)
+                //  console.log('data: ' + data)
             resolve(response.data());
         });
 
@@ -53,7 +46,6 @@ export const getCategories = () => {
     return new Promise((resolve, reject) => {
         const categories = getFirestore().collection("Categories");
 
-        console.log("categories: " + categories);
 
         categories.get().then((response) => {
             if (response.size === 0) {
@@ -66,7 +58,6 @@ export const getCategories = () => {
 
 
             resolve(data);
-            console.log('categories: ' + data);
         });
     });
 

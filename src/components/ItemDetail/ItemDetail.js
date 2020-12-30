@@ -13,7 +13,7 @@ const ItemDetail = ({ product }) => {
   const handleProductArray = () => {
     addProductToCart(product, add);
   };
-
+console.log(product)
   const [add, setAdd] = useState(1);
 
   const onAdd = (value) => {
@@ -57,36 +57,19 @@ const ItemDetail = ({ product }) => {
                 </tr>
               </thead>
               <tbody>
-                <tr className=" font-weight-bold">
-                 $ {product.price}
+                <tr className=" font-weight-bold">$ {product.price}</tr>
+                <tr className="font-weight-bold">
+                  Caracteristicas del producto:{" "}
                 </tr>
-                <tr className="font-weight-bold">Reputacion del vendedor</tr>
-                
-                  </tbody>
-                  <ul className="list-group my-1">
-                    <li className="mt-1">Transacciones: {product.seller_transactions}</li>
-                    <li className="my-1">
-                      Ventas completadas:{" "}
-                      {product.seller_transactions_completed}
-                    </li>
-                    <li className="my-1">
-                      Ventas canceladas: {product.seller_transactions_canceled}
-                    </li>
-                    <li>
-                      <a
-                        className="btn-dark btn-block text-light my-1 py-1"
-                        href={product.seller_permalink}
-                        target="_blanc"
-                      >
-                        Perfil del vendedor
-                      </a>
-                    </li>
-                    <li className="my-1"> Paga en hasta {product.installments_quantity} cuotas de ${" "}
-                  {product.installments_amount}</li>
-                  </ul>
-                
-       
-              
+              </tbody>
+              <ul className="list-group my-1">
+                <li className="mt-1">{product.description1}</li>
+                <li className="my-1">{product.description2}</li>
+                <li className="my-1">{product.description3}</li>
+                <li>{product.description4}</li>
+                <li className="my-1">{product.description5}</li>
+                <li className="my-1">{product.description6}</li>
+              </ul>
             </Table>
           </div>
         </div>
