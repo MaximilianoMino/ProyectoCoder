@@ -19,15 +19,24 @@ const Cart = () => {
   const handleDel = (p) => {
     deleteProduct(p.id);
   };
-
+const flyer = {
+  backgroundImage:
+    "url(https://images.pexels.com/photos/5632371/pexels-photo-5632371.jpeg?auto=compress&cs=tinysrgb&dpr=2&h=650&w=940)",
+  width: "100%",
+  height: "100vh",
+  backgroundPosition: " bottom",
+  backgroundAttachment: "fixed",
+  backgroundRepeat: "no-repeat",
+};
 
   const style ={ 
-    maxHeight: "200px",
-    maxWidth: "200px"
+    maxHeight: "100px",
+    maxWidth: "80px"
   }
 
   return (
     <>
+    <div style={flyer}></div>
       <div>
         <h1 className="text-center">Carrito de compras</h1>
         {/* <UserForm /> */}
@@ -57,31 +66,29 @@ const Cart = () => {
             {productArray.map((e) => (
               <tbody key={e.id}>
                 <tr>
-                  <td>
+                  <td maxWidth="200px">
                     <img
-                      alt=""
+                      alt={e.title}
                       title={e.title}
                       src={e.thumbnail}
                       style={style}
-                      className="img-fluid card-img mw-50"
+                      className="img-fluid card-img"
                     />
                   </td>
                   <td>{e.title}</td>
                   <td>{e.price}</td>
-                  <td>{e.quantity}</td>
-                  <td>
-                    <FontAwesomeIcon
+                  <td>{e.quantity}   <FontAwesomeIcon
                       onClick={() => handleDel(e)}
                       className="h4 pb-2 mx-2 my-auto"
                       icon={faTimesCircle}
-                    />
-                  </td>
+                    /></td>
+                 
                 </tr>
               </tbody>
             ))}
 
             {/* Seccion total */}
-            <div className="d-flex col-12 justify-content-between fixed-bottom">
+            <div className="d-flex col-12 justify-content-between">
               {/* Todavia no funciona  */}
               <Button className="btn-dark" onClick={historyBack}>
                 Volver

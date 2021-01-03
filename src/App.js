@@ -7,11 +7,13 @@ import Cart from "./components/cart/Cart";
 import { CartProvider } from "./context/CartContext";
 import UserForm from '../src/components/Form/UserForm';
 import Categories from "./components/categories/Categories";
+import Footer from "./Footer/Footer";
 
 
 
 const App = () => {
   return (
+    <div>
     <CartProvider>
       <BrowserRouter> 
    
@@ -34,8 +36,10 @@ const App = () => {
           </Route>
         
         </Switch>
+        <Footer />
       </BrowserRouter>
     </CartProvider>
+    </div>
   );
 };
 

@@ -21,9 +21,10 @@ const ItemList = () => {
 
   return (
     <>
-      <div className="d-flex justify-content-center flex-wrap">
+      <div className="">
+      <div className="">
         {loading ? (
-          <i className="spinner-border"></i>
+          <i className="spinner-border "></i>
         ) : (
           product.map((e) => (
             <Item
@@ -35,6 +36,7 @@ const ItemList = () => {
             />
           ))
         )}
+      </div>
       </div>
     </>
   );

@@ -1,33 +1,32 @@
 import React from "react";
 import Button from "react-bootstrap/Button";
-import Card from "react-bootstrap/Card";
 import { Link } from "react-router-dom";
-
+import './item.scss'
 const Item = ({ thumbnail, price, id, title }) => {
 
-  const style = {
-    maxHeight: "300px",
-    maxWidth: "500px",
-    minHeight: "200px",
-    minWidth: "200px"
-  };
 
 
   return (
-    <div className="d-inline-flex flex-wrap justify-content-center">
-      <Card style={{ width: "18rem" }} className="m-4 p-2">
-        <Card.Img variant="top" src={thumbnail} className="img-fluid shadow" style={style}/>
-        <Card.Body className="text-dark">
-          <Card.Title>{title}</Card.Title>
-          <Card.Text>{`$ ${price}`}</Card.Text>
-          <Link to={`/detalle/${id}`}>
-            <Button variant="dark" className="btn-block btn btn-dark">
-              Ver detalle
-            </Button>
-          </Link>
-        </Card.Body>
-      </Card>
+   <>
+    <div className="container my-3 d-inline-flex col-md-4">
+      <div className="row  d-flex justify-content-center">
+        <div className="shadow product-container p-3">
+          <div className="product-top">
+            <img src={thumbnail} alt={title} className="mr-2 my-4 shadow img-fluid"/>
+           
+          </div>
+
+           <div className="product-bottom text-center">
+              <h3>{title}</h3>
+              <h5>$ {price}</h5>
+           </div> 
+           <Link to={`/detalle/${id}`}>
+           <Button className="btn-block btn-dark my-4">Ver detalle</Button>
+           </Link>
+        </div>
+      </div>
     </div>
+    </>
   );
 };
 

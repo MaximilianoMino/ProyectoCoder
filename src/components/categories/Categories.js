@@ -41,15 +41,15 @@ useEffect(() => {
   return (
     <>
  <div style={flyer}></div>
-
+ <div className="">
       {loading === false ? (
-        <i className="spinner-border"></i>
+        <i className="spinner-border text-center"></i>
       ) : cat ? (
         products.map((product) => {
           return (
             <div
               key={product.id}
-              className="d-flex justify-content-center flex-row"
+              className=" d-flex justify-content-center"
             >
               {
                 <Item
@@ -66,6 +66,7 @@ useEffect(() => {
       ) : (
         <ItemList />
       )}
+     </div>
     </>
   );
 }

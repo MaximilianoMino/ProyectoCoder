@@ -12,10 +12,9 @@ const [category, setCategory] = useState([]);
 
 
 
-
     useEffect(() => {
       getCategories().then((response) => {
-         setCategory(response);    
+         setCategory([response]);    
          console.log(response)
 
       });

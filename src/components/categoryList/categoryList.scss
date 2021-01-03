@@ -1,0 +1,22 @@
+.title-box {
+    background: rgb(168, 8, 8);
+    color: #fff;
+    width: 180px;
+    padding: 4px 10px;
+    height: 40px;
+    margin-bottom: 20px;
+    display: flex;
+    align-items: center;
+    p {
+        font-size: 2rem;
+    }
+    &::after {
+        content: '';
+        border-top: 40px solid rgb(168, 8, 8);
+        border-right: 50px solid transparent;
+        position: absolute;
+        display: flex;
+        margin-top: 0px;
+        margin-left: 170px;
+    }
+}
