@@ -13,8 +13,7 @@ import logo from "../../assets/images/logoo.png";
 const NavBar = () => {
   
   const [categories, setCategories] = useState();
-  //1 pasada categories = undefined
-  //2 pasada categories = [{},{}]
+ 
 
   useEffect(() => {
     getCategories().then((response) => {

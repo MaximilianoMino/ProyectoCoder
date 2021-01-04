@@ -12,7 +12,6 @@ const Cart = () => {
     clearCart,
     deleteProduct,
     getGrandTotal,
-    historyBack,
   } = useCartContext();
 
  
@@ -38,7 +37,8 @@ const flyer = {
     <>
     <div style={flyer}></div>
       <div>
-        <h1 className="text-center">Carrito de compras</h1>
+        <h1 className="text-center">Carrito de compras</h1>  
+      
         {/* <UserForm /> */}
         {productArray.length === 0 ? (
           <div>
@@ -65,8 +65,8 @@ const flyer = {
             </thead>
             {productArray.map((e) => (
               <tbody key={e.id}>
-                <tr>
-                  <td maxWidth="200px">
+                <tr style={style}>
+                  <td>
                     <img
                       alt={e.title}
                       title={e.title}
@@ -77,7 +77,8 @@ const flyer = {
                   </td>
                   <td>{e.title}</td>
                   <td>{e.price}</td>
-                  <td>{e.quantity}   <FontAwesomeIcon
+                  <td>{e.quantity}  
+                   <FontAwesomeIcon
                       onClick={() => handleDel(e)}
                       className="h4 pb-2 mx-2 my-auto"
                       icon={faTimesCircle}
@@ -88,16 +89,13 @@ const flyer = {
             ))}
 
             {/* Seccion total */}
-            <div className="d-flex col-12 justify-content-between">
+            <div className="d-flex col-12 justify-content-between align-content-end">
               {/* Todavia no funciona  */}
-              <Button className="btn-dark" onClick={historyBack}>
-                Volver
-              </Button>
-
+             
               <h3>Total ${getGrandTotal()} ARS</h3>
 
               <Link to="/">
-                <Button className="btn-dark btn-block mr-auto">
+                <Button className="btn-dark mr-auto">
                   Continuar comprando
                 </Button>
               </Link>

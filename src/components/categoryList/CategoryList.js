@@ -3,15 +3,39 @@ import React,{ useEffect, useState } from "react";
 import { useParams } from "react-router-dom";
 import Carousel from "react-bootstrap/Carousel";
 import Item from "../../components/Item/Item";
-import { getProducts } from "../../firebase/dataBase";
+import { getHomeProducts } from "../../firebase/productsHome";
+import { getCategories } from "../../firebase/dataBase";
 import './categoryList.scss'
+import Spinner from "../Spinner/Spinner";
+
 
 
 const CategoryList = ({category}) => {
   const [products, setProducts] = useState([]);
   const [loading, setLoading] = useState(false);
 
-  const { cat } = useParams();
+  const { cat } = useParams();  
+  
+
+
+ useEffect(() => {
+   getCategories().then((response) => {
+     // console.log("**************");
+     // console.log(response)
+     console.log(response);
+   });
+ }, []);
+
+  
+  useEffect(() => {
+    setTimeout(() => {
+      getHomeProducts(cat).then((response) => {
+        setProducts(response);
+        setLoading(true);
+      });
+    }, 1000);
+  }, [cat]);
+
 
   //FILTROS
 
@@ -27,7 +51,6 @@ const CategoryList = ({category}) => {
     (categorie) => categorie.name === "Cámaras"
   );
 
-  console.log(productsCamera);
 
   //Filtrando lo s objetivos
   const productsObjetives = products.filter(
@@ -45,7 +68,6 @@ const CategoryList = ({category}) => {
     (product) => product.category_id === "Accesorios"
   );
 
-  console.log(productAccessories);
   //Filtro la categoria accesorios
   const catAcce = category.filter(
     (categorie) => categorie.name === "Accesorios"
@@ -61,23 +83,12 @@ const CategoryList = ({category}) => {
     (categorie) => categorie.name === "Drones"
   );
 
-  console.log(typeof catAcce);
-  console.log(catAcce);
 
-  useEffect(() => {
-    setTimeout(() => {
-      getProducts(cat).then((response) => {
-        setProducts(response);
-        setLoading(true);
-      });
-    }, 1000);
-  }, [cat]);
 
-  console.log(category.name);
   return (
     <>
       {/* CAMARAS */}
-{ loading === false ? <p className="spinner-border"></p> :
+{ loading === false ? <Spinner /> :
       <div>{catCamera.map((categorie) => {
         return (
           <div className="my-5">
@@ -90,9 +101,7 @@ const CategoryList = ({category}) => {
       })}
 
       {catCamera
-        ?  <Carousel>
-        <Carousel.Item interval={1000}>
-        { productsCamera.map((product) => {
+        ?   productsCamera.map((product) => {
             return (
               <Item
                 title={product.title}
@@ -102,9 +111,7 @@ const CategoryList = ({category}) => {
                 key={product.id}
               />
             );
-          })}
-        </Carousel.Item>
-        </Carousel>
+          })
         : null}
 
       {/* OBJETIVOS */}
@@ -121,9 +128,7 @@ const CategoryList = ({category}) => {
       })}
 
       {catObjetives
-        ?  <Carousel>
-        <Carousel.Item interval={1000}>
-        { productsObjetives.map((product) => {
+        ?   productsObjetives.map((product) => {
             return (
               
               <Item
@@ -134,9 +139,7 @@ const CategoryList = ({category}) => {
                 key={product.id}
               />
             );
-          })}
-        </Carousel.Item>
-        </Carousel> 
+          })
         : null}
 
       {/* ACCESORIOS */}
@@ -152,9 +155,7 @@ const CategoryList = ({category}) => {
       })}
 
       {catAcce
-        ?  <Carousel>
-        <Carousel.Item interval={1000}>
-         {productAccessories.map((product) => {
+        ? productAccessories.map((product) => {
             return (
               <Item
                 title={product.title}
@@ -164,9 +165,8 @@ const CategoryList = ({category}) => {
                 key={product.id}
               />
             );
-          })}
-        </Carousel.Item>
-        </Carousel> 
+          })
+   
         : null}
 
       {/* Drones */}
@@ -182,9 +182,8 @@ const CategoryList = ({category}) => {
       })}
 
       {catDrones
-        ?  <Carousel>
-        <Carousel.Item interval={1000}>
-         {productDrones.map((product) => {
+        ? 
+         productDrones.map((product) => {
             return (
               <Item
                 title={product.title}
@@ -194,9 +193,8 @@ const CategoryList = ({category}) => {
                 key={product.id}
               />
             );
-          })}
-        </Carousel.Item>
-        </Carousel> 
+          })
+       
         : null}
         </div>
         }

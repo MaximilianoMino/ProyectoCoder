@@ -3,6 +3,8 @@ import ItemDetail from "../../components/ItemDetail/ItemDetail";
 import { getProductsById } from "../../firebase/dataBase";
 import { useParams } from "react-router-dom";
 import Error from '../../components/Error/Error'
+import Spinner from "../../components/Spinner/Spinner";
+
 const ItemDetailContainer = () => {
   const { id } = useParams();
 
@@ -26,7 +28,7 @@ const ItemDetailContainer = () => {
   return (
     <div>
       {loading ? (
-        <i className="spinner-border"></i>
+        <Spinner />
       ) : (product === undefined ?
         <Error />
         :<ItemDetail product={product} />

@@ -21,7 +21,6 @@ const UserForm = () => {
   const [order, setOrder] = useState([]);
   const [orderId, setOrderId] = useState();
   const [ready, setReady] = useState(false);
-  const [validationMail, setValidationMail] = useState("");
   
   
 
@@ -98,6 +97,7 @@ console.log(order)
     e.preventDefault();
 
     if(orderEmail.trim() === repeatEmail.trim()) {   
+ 
 
       setReady(true)
 
@@ -111,7 +111,6 @@ db.collection("Orders").add(order).then(({id}) => setOrderId (id));
 
   return (
     <>
-      <Cupon cupon={orderId} />
 
       {ready ? (
         <Cupon cupon={orderId} />

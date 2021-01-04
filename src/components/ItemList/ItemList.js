@@ -1,6 +1,7 @@
 import React, { useState, useEffect } from "react";
 import Item from "../Item/Item";
 import { getProducts } from "../../firebase/dataBase";
+import Spinner from "../Spinner/Spinner";
 
 
 const ItemList = () => {
@@ -24,7 +25,7 @@ const ItemList = () => {
       <div className="">
       <div className="">
         {loading ? (
-          <i className="spinner-border "></i>
+          <Spinner />
         ) : (
           product.map((e) => (
             <Item
