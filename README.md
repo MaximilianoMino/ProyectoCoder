@@ -1,4 +1,14 @@
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+## Proyecto Final para CoderHouse con React.
+
+React js.
+React Router.
+Hooks.
+React Bootstrap
+Font Awesome
+Context Api.
+Firebase Firestore.
+Order Id with Firestore.
+
 
 ## Available Scripts
 
