@@ -1,73 +1,43 @@
-.cuponContainer {
-    height: 100vh;
+$red: #c82819;
+$grey: #ecedef;
+$black: #343434;
+.cardWrap {
+    width: 27em;
+    margin: 3em auto;
+    color: #fff;
+    font-family: sans-serif;
+    padding: 3rem;
 }
 
-.ticket {
-    color: white;
-    backface-visibility: hidden;
-    transform: rotate(16deg) translateY(25%) translateZ(0);
-    transform-origin: 50% 50%;
-    top: 50%;
-    left: 50%;
-    margin-top: 65px;
-    margin-left: -274px;
-    position: absolute;
-    display: inline-block;
-    padding: 15px 25px;
-    background-image: radial-gradient( ellipse closest-side at 50% 50%, hsla(0, 0%, 100%, 0.10), transparent 90%), radial-gradient( circle at 0 100%, transparent 14px, #d73755 15px), radial-gradient( circle at 100% 100%, transparent 14px, #d73755 15px), radial-gradient( circle at 100% 0, transparent 14px, #d73755 15px), radial-gradient( circle at 0 0, transparent 14px, #d73755 15px);
-    background-position: center center, bottom left, bottom right, top right, top left;
-    background-size: cover, 51% 51%, 51% 51%, 51% 51%, 51% 51%;
-    background-repeat: no-repeat;
-    border-width: 0 4px;
-    border-color: transparent;
-    border-style: solid;
-    border-image: radial-gradient(cover circle, #ebe9ea 0%, #eeeaeb 50%, transparent 51%) 0 39% / 15px 4px repeat;
-}
-
-.ticket+.ticket {
-    transform: rotate(-7deg) translateY(-25%) translateX(10px) translateZ(0);
-    z-index: 1;
-}
-
-.ticket>div {
-    width: 500px;
-    height: 100px;
-    box-sizing: border-box;
+.card {
+    background: linear-gradient(to bottom, $red 0%, $red 26%, $grey 26%, $grey 100%);
+    height: 13em;
     position: relative;
-    border-color: #f0e0e0;
-    border-style: solid;
-    border-width: 2px;
-    border-radius: 5px;
-    text-align: center;
-    font: 2em/1 Impact;
+    margin: auto;
+}
+
+.cardLeft {
+    border-top-left-radius: 8px;
+    border-bottom-left-radius: 8px;
+    width: 23em;
+}
+
+.title {
+    color: $black;
+    margin-left: 4rem;
+    padding: 3rem;
     text-transform: uppercase;
-    padding: 15px;
-    font-stretch: extra-expanded;
+    font-weight: normal;
+    p {
+        position: absolute;
+        margin-top: -2rem;
+        margin-left: -5.5rem;
+    }
 }
 
-.ticket>div:before,
-.ticket>div:after {
-    content: attr(data-number);
-    font: .525em/1 'Courier New';
-    position: absolute;
-    width: 96px;
-    line-height: 28px;
-    transform: rotate(90deg) translateZ(0);
-    transform-origin: 0% 0%;
-    text-align: center;
-    display: block;
-    top: 0;
-    border-color: #f6eaea;
-    border-style: solid;
-    border-width: 2px 0 0;
-}
-
-.ticket>div:before {
-    left: 28px;
-}
-
-.ticket>div:after {
-    transform-origin: 100% 0%;
-    right: 28px;
-    transform: rotate(-90deg) translateZ(0);
+.barcode {
+    height: 2em;
+    width: 0;
+    margin: 1.2em 0 0 .8em;
+    box-shadow: 1px 0 0 1px $black, 5px 0 0 1px $black, 10px 0 0 1px $black, 11px 0 0 1px $black, 15px 0 0 1px $black, 18px 0 0 1px $black, 22px 0 0 1px $black, 23px 0 0 1px $black, 26px 0 0 1px $black, 30px 0 0 1px $black, 35px 0 0 1px $black, 37px 0 0 1px $black, 41px 0 0 1px $black, 44px 0 0 1px $black, 47px 0 0 1px $black, 51px 0 0 1px $black, 56px 0 0 1px $black, 59px 0 0 1px $black, 64px 0 0 1px $black, 68px 0 0 1px $black, 72px 0 0 1px $black, 74px 0 0 1px $black, 77px 0 0 1px $black, 81px 0 0 1px $black;
 }

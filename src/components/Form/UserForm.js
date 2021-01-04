@@ -89,10 +89,7 @@ const handleChangeEmail = (e) => {
   setOrderEmail(e.target.value);
 }
 
-console.log(order)
 
-   console.log(repeatEmail)
-         console.log(orderEmail)
   const submitOrder = (data, e) => {
     e.preventDefault();
 
@@ -111,7 +108,6 @@ db.collection("Orders").add(order).then(({id}) => setOrderId (id));
 
   return (
     <>
-
       {ready ? (
         <Cupon cupon={orderId} />
       ) : (
@@ -214,9 +210,11 @@ db.collection("Orders").add(order).then(({id}) => setOrderId (id));
               </Form>
             </div>
             <div className="col-12 col-sm-6 my-3">
-              <h2 className="text-center">Resumen de compra</h2>
-              <p className="text-center">{title}</p>
-              <p className="text-center">Total: $ {total}</p>
+              <h2 className="text-center mb-4">Resumen de compra</h2>
+              { productArray.map((p) => <p className="text-center h6 ">{p.title}</p> )
+              
+              }
+              <p className="text-center h5 mt-5">Total: $ {total}</p>
             </div>
           </div>
         </div>

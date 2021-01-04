@@ -26,7 +26,7 @@ const App = () => {
             <UserForm />
           </Route>
           <Route exact path="/">
-            <Home greetings="SHOOTINGSTORE" />
+            <Home />
           </Route>
           <Route exact path="/detalle/:id">
             <ItemDetailContainer />

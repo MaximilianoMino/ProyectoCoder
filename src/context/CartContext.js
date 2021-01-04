@@ -65,10 +65,6 @@ export const CartProvider = ({ children }) => {
   };
 
 
-//Boton de volver atras
-const historyBack = () =>{
-window.history.back();
-}
 
 
   //Vaciar carrito
@@ -90,8 +86,7 @@ window.history.back();
         clearCart,
         getCartIconQuantity,
         deleteProduct,
-        getGrandTotal,
-        historyBack
+        getGrandTotal
       }}
     >
       {children}

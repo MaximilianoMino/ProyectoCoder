@@ -8,7 +8,7 @@ import logo from '../../assets/images/logoo.png'
 
 
 
-const Home = ({ greetings }) => {
+const Home = ( ) => {
 
 
 
@@ -19,7 +19,7 @@ const Home = ({ greetings }) => {
       <Header />
     </div>
     <div className="d-flex justify-content-center py-5">
-      <img src={logo} className="px-auto" />
+      <img src={logo} alt="logo" className="px-auto" />
       </div>
       <hr></hr>
       <CategoriesContainer />

@@ -17,13 +17,11 @@ const NavBar = () => {
 
   useEffect(() => {
     getCategories().then((response) => {
-      // console.log("**************");
-      // console.log(response)
+     
       setCategories(response);
     });
   }, []);
   
-  console.log(categories)
   return (
     <>
       {" "}

@@ -2,10 +2,13 @@ import React from "react";
 import useCartContext from "../../context/CartContext";
 import Table from "react-bootstrap/Table";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-import { faTimesCircle } from "@fortawesome/free-solid-svg-icons";
+import { faCreditCard, faShoppingBasket, faTimesCircle } from "@fortawesome/free-solid-svg-icons";
 import Button from "react-bootstrap/Button";
 import { Link } from "react-router-dom";
-// import UserForm from "../Form/UserForm";
+import { faTrashAlt } from "@fortawesome/free-solid-svg-icons";
+import './cart.scss'
+
+
 const Cart = () => {
   const {
     productArray,
@@ -29,16 +32,18 @@ const flyer = {
 };
 
   const style ={ 
-    maxHeight: "100px",
-    maxWidth: "80px"
+    minHeight: "70px",
+    minWidth: "200",
+    maxHeight: "80px",
+    maxWidth: "100px"
   }
 
   return (
     <>
-    <div style={flyer}></div>
+      <div style={flyer}></div>
       <div>
-        <h1 className="text-center">Carrito de compras</h1>  
-      
+        <h1 className="text-center">Carrito de compras</h1>
+
         {/* <UserForm /> */}
         {productArray.length === 0 ? (
           <div>
@@ -47,72 +52,85 @@ const flyer = {
             </p>
             <p className="ml-4">
               Haga clic{" "}
-              <Link to="/"  className="font-weight-bold">
+              <Link to="/" className="font-weight-bold">
                 aqui
               </Link>{" "}
               para continuar haciendo compras
             </p>
           </div>
         ) : (
-          <Table responsive="sm">
-            <thead>
-              <tr>
-                <th>#</th>
-                <th>PRODUCTO</th>
-                <th>PRECIO</th>
-                <th>CANTIDAD</th>
-              </tr>
-            </thead>
-            {productArray.map((e) => (
-              <tbody key={e.id}>
-                <tr style={style}>
-                  <td>
-                    <img
-                      alt={e.title}
-                      title={e.title}
-                      src={e.thumbnail}
-                      style={style}
-                      className="img-fluid card-img"
-                    />
-                  </td>
-                  <td>{e.title}</td>
-                  <td>{e.price}</td>
-                  <td>{e.quantity}  
-                   <FontAwesomeIcon
-                      onClick={() => handleDel(e)}
-                      className="h4 pb-2 mx-2 my-auto"
-                      icon={faTimesCircle}
-                    /></td>
-                 
+          <div>
+            <Table responsive="sm">
+              <thead>
+                <tr>
+                  <th className="px-5" style={style}>
+                    #
+                  </th>
+                  <th className="px-4 text-center">PRODUCTO</th>
+                  <th className="px-4 text-center">PRECIO</th>
+                  <th className="px-4 text-center">CANTIDAD</th>
                 </tr>
-              </tbody>
-            ))}
+              </thead>
+              {productArray.map((product) => (
+                <tbody key={product.id}>
+                  <tr>
+                    <td className="px-4 text-center" style={style}>
+                      <img
+                        src={product.thumbnail}
+                        alt={product.title}
+                        style={style}
+                        className="img-fluid card-img"
+                      />
+                    </td>
+                    <td className="px-4 text-center">{product.title}</td>
+                    <td className="px-4 text-center">$ {product.price}</td>
+                    <td className="px-4 text-center">
+                      {product.quantity}
 
-            {/* Seccion total */}
-            <div className="d-flex col-12 justify-content-between align-content-end">
-              {/* Todavia no funciona  */}
-             
-              <h3>Total ${getGrandTotal()} ARS</h3>
+                      <FontAwesomeIcon
+                        onClick={() => handleDel(product)}
+                        className="h4 pb-2 ml-4 my-auto icon"
+                        icon={faTimesCircle}
+                      />
+                    </td>
+                  </tr>
+                </tbody>
+              ))}
+            </Table>
 
-              <Link to="/">
-                <Button className="btn-dark mr-auto">
-                  Continuar comprando
+            <div className="text-center">
+              <FontAwesomeIcon
+                icon={faTrashAlt}
+                className=" text-danger ml-3 icon"
+                onClick={clearCart}
+              />
+
+              <p className="h5">Borrar todos los productos</p>
+            </div>
+
+            <div className="col-12 d-flex justify-content-between mt-5">
+              <div className="mr-auto">
+                {" "} <Link to="/">
+                <Button className=" btn-dark">
+                  Continuar{" "}
+                  <FontAwesomeIcon icon={faShoppingBasket} className="ml-2" />
                 </Button>
-              </Link>
+                </Link>
+              </div>
+              <div className="m-auto pr-5">
+                <p className="pr-5 h3">Total ${getGrandTotal()} ARS</p>
+              </div>
+              <div>
+                {" "}
+                 <Link to="/order">
+                <Button className=" btn-dark">
+                  Comprar{" "}
+                  <FontAwesomeIcon icon={faCreditCard} className="ml-2" />
+                </Button>
+                 </Link>
+              </div>
             </div>
-
-            <div className="d-flex justify-content-between">
-            <button
-              className="ml-3 btn btn-dark"
-              onClick={clearCart}
-            >
-              Borrar todos los productos
-            </button>
-              <Link to="/order">
-                <button className="ml-3 btn btn-dark">Comprar</button>
-              </Link>
-            </div>
-          </Table>
+          </div>
         )}
       </div>
     </>

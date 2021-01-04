@@ -15,7 +15,6 @@ export const getProducts = (cat) => {
             }
 
             const data = response.docs.map((doc) => ({...doc.data(), idFirebase: doc.id }));
-            console.log("get products" + data)
             resolve(data);
         })
     })
@@ -56,8 +55,6 @@ export const getCategories = () => {
                 id: doc.id,
             }));
 
-            console.log("categories" +
-                data)
             resolve(data);
         });
     });

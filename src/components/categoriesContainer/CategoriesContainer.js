@@ -1,6 +1,5 @@
 import React from 'react'
 import { useState, useEffect } from 'react';
-import Categories from "../categories/Categories";
 import { getCategories } from "../../firebase/dataBase";
 import CategoryList from '../categoryList/CategoryList';
 

@@ -1,12 +1,12 @@
 
 import React,{ useEffect, useState } from "react";
 import { useParams } from "react-router-dom";
-import Carousel from "react-bootstrap/Carousel";
 import Item from "../../components/Item/Item";
 import { getHomeProducts } from "../../firebase/productsHome";
-import { getCategories } from "../../firebase/dataBase";
 import './categoryList.scss'
 import Spinner from "../Spinner/Spinner";
+import { Link } from "react-router-dom";
+
 
 
 
@@ -16,16 +16,6 @@ const CategoryList = ({category}) => {
 
   const { cat } = useParams();  
   
-
-
- useEffect(() => {
-   getCategories().then((response) => {
-     // console.log("**************");
-     // console.log(response)
-     console.log(response);
-   });
- }, []);
-
   
   useEffect(() => {
     setTimeout(() => {
@@ -94,8 +84,10 @@ const CategoryList = ({category}) => {
           <div className="my-5">
             <div className="title-box">
               <p className="h2">{categorie.name}</p>
-            </div>
+            </div> 
+            <Link to="/categories/Cámaras">
             <img src={categorie.thumbnail} alt={categorie.name} width="100%" />
+           </Link>
           </div>
         );
       })}
