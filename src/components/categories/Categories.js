@@ -41,34 +41,33 @@ useEffect(() => {
 }, [cat]);
   return (
     <>
- <div style={flyer}></div>
- <div className="">
+ <div style={flyer} className="container-fluid"></div>
+ 
       {loading === false ? (
        <Spinner />
       ) : cat ? (
         products.map((product) => {
           return (
-            <div
-              key={product.id}
-              className=" d-flex justify-content-center"
-            >
-              {
+         
+              
                 <Item
+                  
                   title={product.title}
                   price={product.price}
                   id={product.id}
                   thumbnail={product.thumbnail}
                   key={product.id}
                 />
-              }
-            </div>
+              
+            
           );
         })
       ) : (
         <ItemList />
       )}
-     </div>
+      
     </>
+    
   );
 }
 

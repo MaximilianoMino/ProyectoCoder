@@ -22,8 +22,7 @@ const ItemList = () => {
 
   return (
     <>
-      <div className="">
-      <div className="">
+      <div>
         {loading ? (
           <Spinner />
         ) : (
@@ -37,7 +36,6 @@ const ItemList = () => {
             />
           ))
         )}
-      </div>
       </div>
     </>
   );

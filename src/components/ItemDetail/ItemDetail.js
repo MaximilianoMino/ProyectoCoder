@@ -35,7 +35,7 @@ const ItemDetail = ({ product }) => {
                   <Card.Img
                     variant="top"
                     src={product.thumbnail}
-                    className="img-fluid"
+                    className="img-fluid card-img mh-100"
                   />
                 </Card>
               </div>

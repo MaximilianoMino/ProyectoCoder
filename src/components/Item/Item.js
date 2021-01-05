@@ -12,7 +12,7 @@ const Item = ({ thumbnail, price, id, title }) => {
       <div className="row  d-flex justify-content-center">
         <div className="shadow product-container p-3">
           <div className="product-top">
-            <img src={thumbnail} alt={title} className="mr-2 my-4 shadow img-fluid"/>
+            <img src={thumbnail} alt={title} className="mr-2 my-4 shadow img-fluid mh-100"/>
            
           </div>
 
