@@ -1,22 +1,20 @@
 import React, { useState, useEffect } from "react";
 import Item from "../Item/Item";
-import { getProducts } from "../../firebase/dataBase";
+import ProductsService from "../../services/firebase/productsService";
 import Spinner from "../Spinner/Spinner";
 
+const productsService = new ProductsService();
 
 const ItemList = () => {
-
   const [product, setProduct] = useState([]);
   const [loading, setLoading] = useState(true);
 
   useEffect(() => {
     setTimeout(() => {
-      getProducts()
-        .then((response) => {
-          setProduct(response);
-          setLoading(false);
-        });
-    
+      productsService.getProductsFromCat().then((response) => {
+        setProduct(response);
+        setLoading(false);
+      });
     }, 2000);
   }, []);
 

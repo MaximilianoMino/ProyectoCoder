@@ -1,5 +1,5 @@
 .title-box {
-    background: rgb(168, 8, 8);
+    background: rgb(235, 74, 74);
     color: #fff;
     width: 180px;
     padding: 4px 10px;
@@ -8,15 +8,27 @@
     display: flex;
     align-items: center;
     p {
-        font-size: 2rem;
+        margin-top: 0.4em;
+        font-size: 2em !important;
     }
     &::after {
-        content: '';
-        border-top: 40px solid rgb(168, 8, 8);
+        content: "";
+        border-top: 40px solid rgb(235, 74, 74);
         border-right: 50px solid transparent;
         position: absolute;
         display: flex;
         margin-top: 0px;
         margin-left: 170px;
     }
+}
+
+.products-home {
+    display: flex;
+    align-items: start;
+    overflow: hidden;
+    overflow-x: scroll;
+}
+
+.products-home::-webkit-scrollbar {
+    width: 0;
 }

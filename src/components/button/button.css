@@ -1,0 +1,57 @@
+.link {
+    align-self: center;
+    width: 200px;
+}
+
+.btn-global {
+    cursor: pointer;
+    letter-spacing: 3px;
+    text-transform: uppercase;
+    font-family: Marvel;
+    font-size: 10pt;
+    width: 200px;
+    height: 45px;
+    text-align: center;
+    position: relative;
+    border: solid #777 2px;
+    color: #777;
+    z-index: 1;
+    transition: all 0.5s ease-in-out;
+    border-radius: 5px;
+    background: transparent;
+}
+
+.btn-global:before {
+    content: "";
+    width: 100%;
+    height: 0%;
+    position: absolute;
+    bottom: 0;
+    right: 0;
+    background-color: #e0c9cb;
+    transition: 0.5s ease-in-out;
+    z-index: -1;
+}
+
+.btn-global:hover:before {
+    height: 100%;
+}
+
+.btn-global:hover {
+    color: #4a4a4a;
+    border-color: #e0c9cb;
+}
+
+.btn-global:active:before {
+    background-color: #e0c9cb;
+}
+
+.btn-global:active {
+    border-color: #e0c9cb;
+    background-color: #e0c9cb;
+    color: #4a4a4a;
+}
+
+.btn-global:focus {
+    outline: none;
+}

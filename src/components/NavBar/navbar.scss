@@ -1,0 +1,15 @@
+#navbar {
+    position: fixed;
+    width: 100%;
+    background: #ffffff00 !important;
+}
+
+.navbar-text {
+    color: #000 !important;
+    z-index: 10000;
+    text-decoration: none !important;
+}
+
+.navbar-text:hover {
+    box-shadow: inset 0px -10px 7px -5px #e0c9cb;
+}

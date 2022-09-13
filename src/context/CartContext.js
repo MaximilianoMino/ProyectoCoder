@@ -5,16 +5,13 @@ const CartContext = createContext();
 const useCartContext = () => useContext(CartContext);
 
 export const CartProvider = ({ children }) => {
-
   let productsInStorage = JSON.parse(localStorage.getItem("Products"));
   if (!productsInStorage) {
     productsInStorage = [];
   }
 
-
   const [productArray, setProductArray] = useState(productsInStorage);
-
-//Agregar y traer productos del storage 
+  //Agregar y traer productos del storage
 
   useEffect(() => {
     if (productsInStorage) {
@@ -22,8 +19,6 @@ export const CartProvider = ({ children }) => {
     } else {
       localStorage.setItem("Products", JSON.stringify([]));
     }
-
-    
   }, [productArray, productsInStorage]);
 
   //Agregar producto al carrito
@@ -57,15 +52,11 @@ export const CartProvider = ({ children }) => {
   const deleteProduct = (id) => {
     productArray.splice(
       productArray.findIndex((p) => p.id === id),
-      1  
-    ); 
+      1
+    );
 
     setProductArray([...productArray]);
-
   };
-
-
-
 
   //Vaciar carrito
 
@@ -86,10 +77,10 @@ export const CartProvider = ({ children }) => {
         clearCart,
         getCartIconQuantity,
         deleteProduct,
-        getGrandTotal
+        getGrandTotal,
       }}
     >
-      {children}
+      {children}{" "}
     </CartContext.Provider>
   );
 };

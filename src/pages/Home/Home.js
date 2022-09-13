@@ -1,25 +1,17 @@
 import React from "react";
-import './home.scss'
+import "./home.scss";
 import CategoriesContainer from "../../components/categoriesContainer/CategoriesContainer";
 import Header from "../../components/Header/Header";
-import logo from '../../assets/images/logoo.png'
+import logo from "../../assets/images/logoo.png";
 
-
-
-
-
-const Home = ( ) => {
-
-
-
-
+const Home = () => {
   return (
     <>
-    <div className="customContainer">
-      <Header />
-    </div>
-    <div className="d-flex justify-content-center py-5">
-      <img src={logo} alt="logo" className="px-auto" />
+      <div className="customContainer">
+        <Header />
+      </div>
+      <div className="d-flex justify-content-center py-5">
+        <img src={logo} alt="logo" className="px-auto" />
       </div>
       <hr></hr>
       <CategoriesContainer />

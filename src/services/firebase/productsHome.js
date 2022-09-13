@@ -1,12 +1,8 @@
 import { getFirestore } from "./index";
 
-
-
-export const getHomeProducts = (cat) => {
+export const getHomeProducts = () => {
     return new Promise((resolve, reject) => {
-        let products = getFirestore().collection("products").limit(9);
-        console.log("cat " + cat);
-        if (cat) products = products.where("category_id", "==", `${cat}`);
+        let products = getFirestore().collection("products");
         products.get().then((response) => {
             if (response.size === 0) {
                 reject("No hay registros");
@@ -16,7 +12,6 @@ export const getHomeProducts = (cat) => {
                 ...doc.data(),
                 idFirebase: doc.id,
             }));
-            console.log("get products" + data);
             resolve(data);
         });
     });

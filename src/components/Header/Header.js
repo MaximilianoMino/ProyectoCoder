@@ -1,70 +1,57 @@
 import React from "react";
-import pic4 from "../../assets/images/pic4.jpg";
-import drone2 from "../../assets/images/drone2.jpg";
+import camera from "../../assets/images/camera.jpg";
+import drone2 from "../../assets/images/drone.jpg";
 import lente2 from "../../assets/images/lente2.jpg";
-import pic5 from "../../assets/images/pic5.jpg";
+import accessories from "../../assets/images/accessories.jpg";
 import Carousel from "react-bootstrap/Carousel";
-import './header.scss'
+import "./header.scss";
 import { Link } from "react-router-dom";
+import AnimatedText from "react-animated-text-content";
 
-
-
+const data = [
+  { name: "Cámaras", thumbnail: camera },
+  { name: "Accesorios", thumbnail: accessories },
+  { name: "Objetivos", thumbnail: lente2 },
+  { name: "Drones", thumbnail: drone2 },
+];
 
 const Header = () => {
-
-
-
-
-
-
-
   return (
-    <div>
-      <Carousel>
-        <Carousel.Item interval={1000}>
-          <p className="pl-3 p-slider">Camaras</p>
-          <Link to="/categories/Cámaras">
-            <img
-              className="d-block customContainer"
-              src={pic4}
-              alt="First slide"
-            />
-          </Link>
-        </Carousel.Item>
-        <Carousel.Item interval={1000}>
-          <p className="pl-3 p-slider">Objetivos</p>
-          <Link to="/categories/Objetivos">
-          <img
-            className="d-block customContainer"
-            src={lente2}
-            alt="Third slide"
-          />
-          </Link>
-        </Carousel.Item>
-
-        <Carousel.Item interval={1000}>
-          <p className="pl-3 p-slider">Drones</p>
-          <Link to="/categories/Drones">
-            <img
-              className="d-block customContainer"
-              src={drone2}
-              alt="Third slide"
-            />
-          </Link>
-        </Carousel.Item>
-        <Carousel.Item interval={1000}>
-          <p className="pl-3 p-slider">Accesorios</p>
-          <Link to="/categories/Accesorios">
-            <img
-              className="d-block w-100 customContainer"
-              src={pic5}
-              alt="Third slide"
-            />
-          </Link>
-        </Carousel.Item>
-      </Carousel>
-    </div>
+    <>
+      <header>
+        <Carousel>
+          {data.map((e, i) => {
+            return (
+              <Carousel.Item interval={3000} key={i}>
+                <Link to={`/categories/${e.name}`}>
+                  {" "}
+                  <AnimatedText
+                    type="chars"
+                    interval={0.14}
+                    duration={1.19}
+                    animation={{
+                      x: "15px",
+                      y: "100px",
+                      ease: "ease-in",
+                      scale: 0.09,
+                    }}
+                    className="pl-3 p-slider"
+                  >
+                    {e.name}
+                  </AnimatedText>
+                  <img
+                    className="d-block customContainer"
+                    src={e.thumbnail}
+                    alt="First slide"
+                  />
+                </Link>
+              </Carousel.Item>
+            );
+          })}
+        </Carousel>
+      </header>
+    </>
   );
-}
+};
 
-export default Header
+export default Header;
