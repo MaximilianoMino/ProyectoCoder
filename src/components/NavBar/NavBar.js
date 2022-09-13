@@ -4,59 +4,49 @@ import Nav from "react-bootstrap/Nav";
 import "bootstrap/dist/css/bootstrap.min.css";
 import CartIcon from "../CartIcon/CartIcon";
 import { NavLink, Link } from "react-router-dom";
-import { getCategories } from "../../firebase/dataBase";
+import ProductsService from "../../services/firebase/productsService";
 import logo from "../../assets/images/logoo.png";
 
+import "./navbar.scss";
+import UserIcon from "./usericon/UserIcon";
 
-
+const productsService = new ProductsService();
 
 const NavBar = () => {
-  
   const [categories, setCategories] = useState();
- 
 
   useEffect(() => {
-    getCategories().then((response) => {
-     
+    productsService.getCategories().then((response) => {
       setCategories(response);
     });
   }, []);
-  
+
   return (
     <>
-      {" "}
-      
       <Navbar
         variant="light"
         collapseOnSelect
         expand="lg"
-        className="sticky-top bg-light"
-      >     
-      
-       
-       <Link to="/cart" className="mx-2">
+        className="sticky-top"
+        id="navbar"
+      >
+        <Link to="/cart" className="mx-2">
           <CartIcon />
-        </Link> 
-        <Navbar.Brand className="m-auto">
- <Link to="/">
-      <img
-            src={logo}
-            width="200px"
-            height="50px"
-            alt="logo"
-          />
         </Link>
-      
-      </Navbar.Brand>
-    
-        <Navbar.Toggle aria-controls="responsive-navbar-nav" />  
-      
+        <Navbar.Brand className="m-auto">
+          <Link to="/">
+            <img src={logo} width="200px" height="50px" alt="logo" />
+          </Link>
+        </Navbar.Brand>
+
+        <Navbar.Toggle aria-controls="responsive-navbar-nav" />
+
         <Navbar.Collapse id="responsive-navbar-nav">
-          <Nav className="m-auto">  
+          <Nav className="m-auto">
             <NavLink
               to="/"
               activeClassName="selected"
-              className="navbar-text h5 text-dark mx-2"
+              className="navbar-text text-dark mx-2"
             >
               Home
             </NavLink>
@@ -65,19 +55,20 @@ const NavBar = () => {
                   return (
                     <NavLink
                       key={e.id}
-                      className="navbar-text h5 text-dark mx-2"
-                      to={`/categories/${e.id}`}
+                      className="navbar-text  text-dark mx-2"
+                      to={`/categories/${e.name}`}
                     >
                       {e.name}
                     </NavLink>
                   );
                 })
-              : ""} 
-              
+              : ""}
+
+            <Navbar.Brand className="">
+              <UserIcon />
+            </Navbar.Brand>
           </Nav>
-        </Navbar.Collapse>  
-       
-       
+        </Navbar.Collapse>
       </Navbar>
     </>
   );

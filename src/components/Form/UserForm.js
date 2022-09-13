@@ -3,17 +3,17 @@ import { useEffect } from "react";
 import { useState } from "react";
 import { Form, Button } from "react-bootstrap";
 import useCartContext from "../../context/CartContext";
-import { getFirestore } from "../../firebase/index";
 import { useForm } from "react-hook-form";
-import Cupon from '../Cupon/Cupon';
+import Cupon from "../Cupon/Cupon";
+import OrderService from "../../services/firebase/orderService";
 
-
+const orderService = new OrderService();
 const UserForm = () => {
   const [title, setTitle] = useState();
   const [total, setTotal] = useState(Number);
   const [date, setDate] = useState();
   const [id, setId] = useState();
-   const [price, setPrice] = useState(Number);
+  const [price, setPrice] = useState(Number);
   const [orderName, setOrderName] = useState();
   const [orderLastName, setOrderLastName] = useState();
   const [orderEmail, setOrderEmail] = useState();
@@ -21,8 +21,6 @@ const UserForm = () => {
   const [order, setOrder] = useState([]);
   const [orderId, setOrderId] = useState();
   const [ready, setReady] = useState(false);
-  
-  
 
   const { productArray, getGrandTotal, clearCart } = useCartContext();
 
@@ -41,10 +39,9 @@ const UserForm = () => {
       productArray.map((p) => {
         return p.id;
       })
-    ); 
-  setOrder(order)
+    );
+    setOrder(order);
 
- 
     setTotal(getGrandTotal);
 
     setDate(new Date());
@@ -56,54 +53,44 @@ const UserForm = () => {
     );
   }, [getGrandTotal, productArray]);
 
-   useEffect(() => {
+  useEffect(() => {
     setOrder({
-      buyer: { orderName , orderEmail, orderLastName },
-      items: {id, title, price },
+      buyer: { orderName, orderEmail, orderLastName },
+      items: { id, title, price },
       date,
       total,
     });
-    
     //Mientras escribe en la parte que tiene que repetir correo
-
-
-
-  }, [orderEmail, total, orderName, title,  id , price, date]); 
-
+  }, [orderEmail, total, orderName, title, id, price, date]);
 
   //Ejecutando cada vez que se escribe en el formulario
 
- const  handleChangeLastName = (e) => {
-setOrderLastName ( e.target.value)
- }
+  const handleChangeLastName = (e) => {
+    setOrderLastName(e.target.value);
+  };
 
+  const handleChangeName = (e) => {
+    setOrderName(e.target.value);
+  };
+  const handleChangeRepeatEmail = (e) => {
+    setRepeatEmail(e.target.value);
+  };
 
-const  handleChangeName = (e) => {
-setOrderName ( e.target.value)
- } 
- const handleChangeRepeatEmail = (e) => {
-  setRepeatEmail(e.target.value);
-}
+  const handleChangeEmail = (e) => {
+    setOrderEmail(e.target.value);
+  };
 
-const handleChangeEmail = (e) => {
-  setOrderEmail(e.target.value);
-}
-
-
-  const submitOrder = (data, e) => {
+  const submitOrder = async (data, e) => {
     e.preventDefault();
 
-    if(orderEmail.trim() === repeatEmail.trim()) {   
- 
+    if (orderEmail.trim() === repeatEmail.trim()) {
+      setReady(true);
 
-      setReady(true)
+      clearCart();
 
-    clearCart()  
-    
-
-     const db = getFirestore();
-db.collection("Orders").add(order).then(({id}) => setOrderId (id)); 
-}
+      let generateOrder = await orderService.saveOrder(order);
+      return setOrderId(generateOrder);
+    }
   };
 
   return (
@@ -201,9 +188,9 @@ db.collection("Orders").add(order).then(({id}) => setOrderId (id));
                     </Form.Text>
                   )}
                 </Form.Group>
-     { orderEmail !== repeatEmail ?
-        <p className="text-danger">Los correos deben coincidir</p> : null    
-}
+                {orderEmail !== repeatEmail ? (
+                  <p className="text-danger">Los correos deben coincidir</p>
+                ) : null}
                 <Button variant="dark btn-block" type="submit">
                   Comprar
                 </Button>
@@ -211,9 +198,11 @@ db.collection("Orders").add(order).then(({id}) => setOrderId (id));
             </div>
             <div className="col-12 col-sm-6 my-3">
               <h2 className="text-center mb-4">Resumen de compra</h2>
-              { productArray.map((p) => <p className="text-center h6 ">{p.title}</p> )
-              
-              }
+              {productArray.map((p, i) => (
+                <p className="text-center h6" key={i}>
+                  {p.title}
+                </p>
+              ))}
               <p className="text-center h5 mt-5">Total: $ {total}</p>
             </div>
           </div>

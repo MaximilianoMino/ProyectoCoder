@@ -5,40 +5,42 @@ import ItemDetailContainer from "./pages/ItemDetailContainer/ItemDetailContainer
 import { BrowserRouter, Switch, Route } from "react-router-dom";
 import Cart from "./components/cart/Cart";
 import { CartProvider } from "./context/CartContext";
-import UserForm from '../src/components/Form/UserForm';
+import UserForm from "../src/components/Form/UserForm";
 import Categories from "./components/categories/Categories";
-import Footer from "./Footer/Footer";
-
-
+import Footer from "./components/Footer/Footer";
+import Condiciones from "./pages/bys/Condiciones";
 
 const App = () => {
   return (
     <div>
-    <CartProvider>
-      <BrowserRouter> 
-   
-        <NavBar />
-        <Switch>    
-          <Route exact path="/cart">
-            <Cart />
-          </Route>
-          <Route exact path ="/order">
-            <UserForm />
-          </Route>
-          <Route exact path="/">
-            <Home />
-          </Route>
-          <Route exact path="/detalle/:id">
-            <ItemDetailContainer />
-          </Route>
-          <Route exact path="/categories/:cat?">
+      <CartProvider>
+        <BrowserRouter>
+          <NavBar />
+          <Switch>
+            <Route exact path="/">
+              <Home />
+            </Route>
+
+            <Route exact path="/cart">
+              <Cart />
+            </Route>
+            <Route exact path="/order">
+              <UserForm />
+            </Route>
+            <Route exact path="/detalle/:id">
+              <ItemDetailContainer />
+            </Route>
+            <Route exact path="/categories/:cat?">
               <Categories />
-          </Route>
-        
-        </Switch>
-        <Footer />
-      </BrowserRouter>
-    </CartProvider>
+            </Route>
+
+            <Route exact path="/basesycondiciones">
+              <Condiciones />
+            </Route>
+          </Switch>
+          <Footer />
+        </BrowserRouter>
+      </CartProvider>
     </div>
   );
 };

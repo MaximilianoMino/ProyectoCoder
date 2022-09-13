@@ -1,0 +1,8 @@
+body {
+    background: #edf0f5 !important;
+    letter-spacing: 1px;
+    font-family: "Franklin Gothic Medium", "Arial Narrow", Arial, sans-serif;
+    text-align: center;
+    min-width: 324px;
+    z-index: 1;
+}

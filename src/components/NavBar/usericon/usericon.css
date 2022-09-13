@@ -1,0 +1,27 @@
+.user-icon-wrap:hover::before {
+    cursor: pointer;
+    position: absolute;
+    border-radius: 10px;
+    padding: 3px;
+    top: 4.3em;
+    margin-left: -3em;
+    content: "Proximamente";
+    background-color: rgb(235, 74, 74);
+    color: white;
+    font-size: 12px;
+    animation-name: fadeIn;
+    animation-duration: 4s;
+}
+
+.fa-user-circle {
+    cursor: pointer;
+}
+
+@keyframes fadeIn {
+    0% {
+        opacity: 0;
+    }
+    100% {
+        opacity: 1;
+    }
+}
