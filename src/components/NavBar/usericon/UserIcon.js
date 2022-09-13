@@ -2,7 +2,7 @@ import React from "react";
 import { useState } from "react";
 import Auth from "../../auth/Auth";
 import "./usericon.css";
-
+/* borrar este comentario */
 const UserIcon = () => {
   const [userAuth, setUserAuth] = useState(false);
   return (
