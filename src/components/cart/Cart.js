@@ -1,13 +1,13 @@
 import React from "react";
 import useCartContext from "../../context/CartContext";
 import Table from "react-bootstrap/Table";
-import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import {
-  faCreditCard,
-  faShoppingBasket,
-} from "@fortawesome/free-solid-svg-icons";
+  BsCreditCardFill,
+  BsFillBasketFill,
+  BsTrash2Fill,
+} from "react-icons/bs";
+
 import { Link } from "react-router-dom";
-import { faTrash } from "@fortawesome/free-solid-svg-icons";
 import "./cart.scss";
 import Button from "./button/Button";
 
@@ -81,10 +81,9 @@ const Cart = () => {
                   <td className="px-4 text-center">
                     {product.quantity}
 
-                    <FontAwesomeIcon
+                    <BsTrash2Fill
+                      className="h4 pb-1 ml-4 mx-1 trash-icon position-absolute"
                       onClick={() => handleDel(product)}
-                      className="h4 pb-2 ml-4 mx-1 trash-icon position-absolute"
-                      icon={faTrash}
                     />
                   </td>
                 </tr>
@@ -100,13 +99,17 @@ const Cart = () => {
 
           <div className="col-12 d-flex justify-content-between mt-5">
             <div className="mr-auto">
-              <Button icon={faShoppingBasket} text="Continuar" goTo="/" />
+              <Button icon={<BsFillBasketFill />} text="Continuar" goTo="/" />
             </div>
             <div className="m-auto pr-5">
               <p className="pr-5 h3">Total ${getGrandTotal()} ARS</p>
             </div>
             <div>
-              <Button icon={faCreditCard} text="Comprar" goTo="/order" />
+              <Button
+                text="Comprar"
+                goTo="/order"
+                icon={<BsCreditCardFill />}
+              />
             </div>
           </div>
         </div>

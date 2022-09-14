@@ -1,16 +1,14 @@
 import React from "react";
 import "./footer.scss";
-import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-import {
-  faFacebook,
-  faLinkedin,
-  faGithub,
-  faTwitter,
-} from "@fortawesome/free-brands-svg-icons";
-import { faCopyright } from "@fortawesome/free-solid-svg-icons";
+import { BsGithub, BsLinkedin } from "react-icons/bs";
 
 const Footer = () => {
-  const styles = { color: "white", backgroundColor: "white", width: "70%" };
+  const styles = {
+    color: "white",
+    backgroundColor: "white",
+    width: "100%",
+    marginBottom: ".5em",
+  };
 
   return (
     <>
@@ -20,33 +18,17 @@ const Footer = () => {
             <p className="h4 font-weight-bold ">¡Seguime en mis redes!</p>
           </div>
           <div className="col-12 mt-3 d-flex justify-content-center">
-            <FontAwesomeIcon
-              className="text-white h1 mx-4 "
-              icon={faFacebook}
-            />
-
             <p>
-              <FontAwesomeIcon
-                className="text-white h1 mx-4"
-                icon={faLinkedin}
-              />
+              <BsLinkedin className="text-white h1 mx-4" />
             </p>
             <p>
-              <FontAwesomeIcon className="text-white h1 mx-4" icon={faGithub} />
-            </p>
-            <p>
-              <FontAwesomeIcon
-                className="text-white h1 mx-4"
-                icon={faTwitter}
-              />
+              <BsGithub className="text-white h1 mx-4" />
             </p>
           </div>
           <hr style={styles} className="bg-white h1"></hr>
           <div className="col-12 mt-2 text-center ">
             <p className="blockquote-footer text-white">
-              Copyright{" "}
-              <FontAwesomeIcon className="text-white mr-1" icon={faCopyright} />
-              Maximiliano Miño
+              Copyright Maximiliano Miño
             </p>
           </div>
         </div>

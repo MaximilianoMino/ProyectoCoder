@@ -2,7 +2,6 @@ import React from "react";
 //Design
 import "./itemdetail.scss";
 import Card from "react-bootstrap/Card";
-import "@fortawesome/fontawesome-svg-core";
 //Logic
 import useCartContext from "../../context/CartContext";
 import ItemCount from "../ItemCount/ItemCount";
@@ -20,7 +19,7 @@ const ItemDetail = ({ product }) => {
   return (
     <>
       <div className="divContainer">
-        <h2 className="text-center mt-4">DETALLE DEL PRODUCTO</h2>
+        <h2 className="text-center mt-5 pt-5">DETALLE DEL PRODUCTO</h2>
 
         <div className="container py-5">
           <div className="row">

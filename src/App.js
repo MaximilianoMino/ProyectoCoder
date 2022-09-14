@@ -28,7 +28,7 @@ const App = () => {
             ></Route>
             <Route
               exact
-              path="/categories/:cat?"
+              path="/categories/:cat"
               element={<Categories />}
             ></Route>
 

@@ -25,8 +25,6 @@ const Categories = () => {
 
   const { cat } = useParams();
 
-  console.log(search);
-
   useEffect(() => {
     setTimeout(() => {
       productsService.getProductsFromCat(cat).then((response) => {
@@ -39,7 +37,6 @@ const Categories = () => {
   const filteredProducts = () => {
     products.filter((product) => {
       let response = product.title.toLowerCase().includes(search.toLowerCase());
-      console.log(response);
       return response;
     });
   };

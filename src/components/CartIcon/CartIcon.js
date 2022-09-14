@@ -1,8 +1,8 @@
 import React from "react";
-import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-import { faShoppingCart } from "@fortawesome/free-solid-svg-icons";
+import { BsCartFill } from "react-icons/bs";
+
 import useCartContext from "../../context/CartContext";
-import './cartIcon.scss'
+import "./cartIcon.scss";
 
 const styles = {
   color: "black",
@@ -13,14 +13,8 @@ const CartIcon = () => {
 
   return (
     <div>
-    
-      <FontAwesomeIcon
-        style={styles}
-        className="iconCart"
-        icon={faShoppingCart}
-      /> 
+      <BsCartFill style={styles} className="iconCart" />
       <span className="textIcon">{getCartIconQuantity()}</span>
-     
     </div>
   );
 };
