@@ -1,8 +1,10 @@
 import React from "react";
-import ReactDOM from "react-dom";
+import { createRoot } from "react-dom/client";
+
 import App from "./App";
 import "./index.css";
 
 const divRoot = document.querySelector("#root");
 
-ReactDOM.render( < App / > , divRoot);
+const root = createRoot(divRoot); // createRoot(container!) if you use TypeScript
+root.render(<App />);

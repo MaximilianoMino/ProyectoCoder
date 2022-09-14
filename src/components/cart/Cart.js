@@ -5,7 +5,6 @@ import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import {
   faCreditCard,
   faShoppingBasket,
-  faTimesCircle,
 } from "@fortawesome/free-solid-svg-icons";
 import { Link } from "react-router-dom";
 import { faTrash } from "@fortawesome/free-solid-svg-icons";

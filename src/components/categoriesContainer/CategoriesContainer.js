@@ -24,11 +24,11 @@ const CategoriesContainer = () => {
 
   return (
     <div>
-      {category.map((e) => {
+      {category.map((e, i) => {
         return (
           <CategoryList
             category={e}
-            key={e.id}
+            key={i}
             products={products}
             loading={loading}
           />

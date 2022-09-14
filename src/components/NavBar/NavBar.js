@@ -45,16 +45,16 @@ const NavBar = () => {
           <Nav className="m-auto">
             <NavLink
               to="/"
-              activeClassName="selected"
+              activeclassname="active"
               className="navbar-text text-dark mx-2"
             >
               Home
             </NavLink>
             {categories
-              ? categories.map((e) => {
+              ? categories.map((e, i) => {
                   return (
                     <NavLink
-                      key={e.id}
+                      key={i}
                       className="navbar-text  text-dark mx-2"
                       to={`/categories/${e.name}`}
                     >
